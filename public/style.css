@@ -1,0 +1,37 @@
+body {
+   background-color: bisque;
+}
+
+.header {
+   color: green;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   text-align: center;
+}
+
+table {
+   width: 100vw;
+}
+
+tr {
+   background-color: #fff;
+   width: 500px;
+}
+
+td {
+   text-align: center;
+   height: 40px;
+}
+
+.detail {
+   background-color: green;
+   text-decoration: none;
+   width: 50px;
+   padding: 5px;
+   height: 30px;
+   text-align: center;
+   border: 2px white solid;
+   border-radius: 5px;
+   color: white;
+   cursor: pointer;
+}
+

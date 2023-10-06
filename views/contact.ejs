@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="header">Contact Page</h1>
+    <a href="../">Home</a>
+    <div class="container">
+      <h2>Daftar Kontak</h2>
+      <% if (msg.length != 0) { %>
+       <div><%= msg %></div>
+      <% } %>
+      <a href="/contact/add">Tambah Contact</a>
+      <table>
+        <thead>
+          
+          <% if (contacts.length < 1) { %>
+          <h1>Data Kontak Kosong</h1>
+          <% } else { %>
+            <tr>
+               <th>No</th>
+               <th>Nama</th>
+               <th>Nomor</th>
+               <th>Aksi</th>
+             </tr>
+           </thead>
+           <tbody>
+            <% contacts.forEach((contact, i) => { i++ %>
+          <tr>
+            <td><%= i++ %></td>
+            <td><%= contact.nama %></td>
+            <td><%= contact.nohp %></td>
+            <td>
+               <a class="detail" href="/contact/<%= contact.nama %>">detail</a>
+            </td>
+          </tr>
+          <% }) }%> 
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

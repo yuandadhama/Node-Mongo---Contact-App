@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Add Contact</title>
+   <style>
+      form > div {
+         margin-bottom: 10px;
+      }
+   </style>
+</head>
+<body>
+   <h1>Add Contact</h1>
+   <% if (typeof errors != 'undefined') { %>
+      <div>
+         <ul>
+            <% errors.forEach(error => { %>
+               <li><%= error.msg %></li>
+            <% }) %>
+         </ul>
+      </div>
+   <% } %>
+   <form action="/contact" method="post">
+      <div class="inputColumn">
+         <label for="nama">Nama</label>
+         <input type="text" name="nama" id="nama" required>
+      </div>
+      <div>
+         <label for="email">Email</label>
+         <input type="email" name="email" id="email" required>
+      </div>
+      <div>
+         <label for="noHP">No HP</label>
+         <input type="number" name="noHP" id="noHP" maxlength="12" max required>
+      </div>
+      <button type="submit">Add +</button>
+   </form>
+</body>
+</html>
