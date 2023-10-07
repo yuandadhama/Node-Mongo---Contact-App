@@ -21,7 +21,8 @@
          </ul>
       </div>
    <% } %>
-   <form action="/contact/edit" method="post">
+   <form action="/contact?-method=PUT" method="post">
+      <input type="hidden" name="_id" value="<%= contact._id %>">
       <input type="hidden" name="oldName" value="<%= contact.oldName || contact.nama %>"> 
       <div class="inputColumn">
          <label for="nama">Nama</label>
@@ -33,7 +34,7 @@
       </div>
       <div>
          <label for="noHP">No HP</label>
-         <input type="number" pattern="\d*" name="noHP" id="noHP" maxlength="12" value="<%= contact.noHP %>" required>
+         <input type="number" pattern="\d*" name="nohp" id="nohp" maxlength="12" value="<%= contact.nohp %>" required>
       </div>
       <button type="submit">Edit</button>
    </form>
