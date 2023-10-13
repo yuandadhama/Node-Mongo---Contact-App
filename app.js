@@ -66,11 +66,6 @@ app.get('/about', (req, res) => {
 
 // halaman list contact
 app.get('/contact', async (req, res) => {
-
-   // Contact.find().then(contact => {
-   //    res.send(contact);
-   // })
-
    const contacts = await Contact.find();
 
    res.render('contact', {
@@ -107,26 +102,13 @@ app.post('/contact', [
    }
 });
 
+// hapus contact
 app.delete('/contact', (req, res) => {
    Contact.deleteOne({ nama: req.body.nama }).then((result) => {
       req.flash('msg', 'data contact berhasil dihapus');
       res.redirect('/contact');
    });
 })
-
-// app.get('/contact/delete/:nama', async (req, res) => {
-//    const contact = await Contact.findOne({ nama: req.params.nama });
-
-//    if (!contact) {
-//       res.status(400);
-//       res.send('404');
-//    } else {
-//       Contact.deleteOne({ name: req.params.name }).then((result) => {
-//          req.flash('msg', 'data contact berhasil dihapus');
-//          res.redirect('/contact');
-//       });
-//    }
-// });
 
 // edit contact
 app.get('/contact/edit/:nama', async (req, res) => {
@@ -147,7 +129,7 @@ app.put('/contact', [
       return true;
    }),
    check('email', 'email tidak valid').isEmail(),
-   check('noHP', 'noHP tidak valid').isMobilePhone('id-ID')
+   check('nohp', 'noHP tidak valid').isMobilePhone('id-ID')
 ], (req, res) => {
    const errors = validationResult(req);
    if (!errors.isEmpty()) {
@@ -156,7 +138,7 @@ app.put('/contact', [
          contact: req.body
       });
    } else {
-      Contact.UpdateOne(
+      Contact.updateOne(
          { _id: req.body._id },
          {
             $set: {
@@ -165,10 +147,10 @@ app.put('/contact', [
                nohp: req.body.nohp
             }
          }
-      ).then(res => {
-         req.flash('msg', 'data contact berhasil dihapus');
+      ).then( result => {
+         req.flash('msg', 'data contact berhasil diedit');
          res.redirect('/contact');
-      })
+      });
    }
 });
 

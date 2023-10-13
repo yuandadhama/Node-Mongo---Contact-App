@@ -1,42 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Edit Contact</title>
-   <style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Contact</title>
+    <style>
       form > div {
-         margin-bottom: 10px;
+        margin-bottom: 10px;
       }
-   </style>
-</head>
-<body>
-   <h1>Edit Contact</h1>
-   <% if (typeof errors != 'undefined') { %>
-      <div>
-         <ul>
-            <% errors.forEach(error => { %>
-               <li><%= error.msg %></li>
-            <% }) %>
-         </ul>
-      </div>
-   <% } %>
-   <form action="/contact?-method=PUT" method="post">
-      <input type="hidden" name="_id" value="<%= contact._id %>">
-      <input type="hidden" name="oldName" value="<%= contact.oldName || contact.nama %>"> 
+    </style>
+  </head>
+  <body>
+    <h1>Edit Contact</h1>
+    <% if (typeof errors != 'undefined') { %>
+    <div>
+      <ul>
+        <% errors.forEach(error => { %>
+        <li><%= error.msg %></li>
+        <% }) %>
+      </ul>
+    </div>
+    <% } %>
+    <form action="/contact?_method=PUT" method="post">
+      <input type="hidden" name="_id" value="<%= contact._id %>" />
+      <input
+        type="hidden"
+        name="oldName"
+        value="<%= contact.oldName || contact.nama %>"
+      />
       <div class="inputColumn">
-         <label for="nama">Nama</label>
-         <input type="text" name="nama" id="nama" value="<%= contact.nama %>" required>
+        <label for="nama">Nama</label>
+        <input
+          type="text"
+          name="nama"
+          id="nama"
+          value="<%= contact.nama %>"
+          required
+        />
       </div>
       <div>
-         <label for="email">Email</label>
-         <input type="email" name="email" id="email" value="<%= contact.email %>" required>
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          value="<%= contact.email %>"
+          required
+        />
       </div>
       <div>
-         <label for="noHP">No HP</label>
-         <input type="number" pattern="\d*" name="nohp" id="nohp" maxlength="12" value="<%= contact.nohp %>" required>
+        <label for="noHP">No HP</label>
+        <input
+          type="number"
+          pattern="\d*"
+          name="nohp"
+          id="nohp"
+          maxlength="12"
+          value="<%= contact.nohp %>"
+          required
+        />
       </div>
       <button type="submit">Edit</button>
-   </form>
-</body>
+    </form>
+  </body>
 </html>

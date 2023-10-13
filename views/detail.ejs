@@ -16,10 +16,9 @@
          <div class="nomor"><%= contact.noHP %></div>
          <div class="email"><%= contact.email %></div>
          <a href="/contact/edit/<%= contact.nama %>">Edit</a>
-         <!-- <a href="/contact/delete/<%= contact.nama %>" onclick="return confirm('yakin menghapus kontak')">Hapus</a> -->
          <form action="/contact?_method=DELETE" method="POST">
             <input type="hidden" name="nama" value="<%= contact.nama %>">
-            <button type="submit">Hapus</button>
+            <button type="submit" onclick="return confirm('yakin menghapus contact?')">Hapus</button>
          </form>
          <a href="/contact">Back</a>
       </div>
